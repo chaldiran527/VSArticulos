@@ -35,15 +35,6 @@ namespace Artículos
             conexion.Close();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Insercion exitosa');", true);
 
-            /*
-            //Se asignan las variables para los atributos a insertar
-            string articulo = TextBox1.Text;
-            double precio = double.Parse(TextBox2.Text);
-            conexion.Open();//Se abre la conexion
-            SqlCommand command = new SqlCommand("Insert into Articulo values ('" + articulo + "','" + precio + "')", conexion);
-            command.ExecuteNonQuery();
-            conexion.Close();//Se cierra la conexion
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Insercion exitosa');", true);*/
         }
 
         protected void Button1_Click(object sender, EventArgs e)//boton cerrar
