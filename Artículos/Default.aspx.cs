@@ -25,7 +25,16 @@ namespace Artículos
 
         protected void GetListaDeArticulos()
         {
-            SqlCommand command = new SqlCommand("EXECUTE ShowData1", conexion);
+            SqlCommand command = new SqlCommand();
+            command.Connection = conexion;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "SP_Mostrar";
+
+            command.Parameters.AddWithValue("inPatron", "");
+            command.Parameters.AddWithValue("outResultCode", 0);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            conexion.Close();
             SqlDataAdapter sd = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             sd.Fill(dt);

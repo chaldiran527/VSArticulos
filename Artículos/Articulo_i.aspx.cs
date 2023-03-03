@@ -25,15 +25,24 @@ namespace Artículos
             SqlCommand command = new SqlCommand();
             command.Connection = conexion;
             command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "SP_Insert1";
+            command.CommandText = "SP_InsertArticulo";
 
-            command.Parameters.AddWithValue("ParNombre", nombreArticulo);
-            command.Parameters.AddWithValue("ParPrecio", precioArticulo);
+            command.Parameters.AddWithValue("inNombre", nombreArticulo);
+            command.Parameters.AddWithValue("inPrecio", precioArticulo);
+            command.Parameters.AddWithValue("outResultCode", 0);
 
             conexion.Open();
+            command.Parameters[2].Direction = ParameterDirection.Output;
             command.ExecuteNonQuery();
+            String resultCode = Convert.ToString(command.Parameters[2].Value);
             conexion.Close();
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Insercion exitosa');", true);
+
+            string strInsertOk = "alert('Inserción exitosa');";
+            string strInsertError = "alert('Inserción fallida');";
+
+
+            if (resultCode == "0") ScriptManager.RegisterStartupScript(this, this.GetType(), "script", strInsertOk, true);
+            else ScriptManager.RegisterStartupScript(this, this.GetType(), "script", strInsertError, true);
 
         }
 
