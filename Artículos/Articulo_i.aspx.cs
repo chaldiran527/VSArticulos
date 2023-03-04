@@ -20,7 +20,11 @@ namespace Artículos
         protected void Button2_Click(object sender, EventArgs e)//boton insertar
         {
             string nombreArticulo = TextBox1.Text;
-            double precioArticulo = double.Parse(TextBox2.Text);
+            double precioArticulo = 0;
+            if (int.TryParse(TextBox2.Text, out int value))
+            {
+                 precioArticulo = double.Parse(TextBox2.Text);
+            }
 
             SqlCommand command = new SqlCommand();
             command.Connection = conexion;
@@ -37,13 +41,10 @@ namespace Artículos
             String resultCode = Convert.ToString(command.Parameters[2].Value);
             conexion.Close();
 
-            string strInsertOk = "alert('Inserción exitosa');";
-            string strInsertError = "alert('Inserción fallida');";
-
-
+            string strInsertOk = "alert('Inserción exitosa!');";
+            
             if (resultCode == "0") ScriptManager.RegisterStartupScript(this, this.GetType(), "script", strInsertOk, true);
-            else ScriptManager.RegisterStartupScript(this, this.GetType(), "script", strInsertError, true);
-
+            else ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Inserción fallida')", true);
         }
 
         protected void Button1_Click(object sender, EventArgs e)//boton cerrar

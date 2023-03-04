@@ -15,9 +15,10 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="StyleSheetMaster.css" rel="stylesheet" />
 
 </head>
-<body>
+<body style="background-image: url('https://linuxconfig.org/wp-content/uploads/2020/03/Focal-Fossa_Plain_WP_1920x1080.png')">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -58,9 +59,9 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>Pablo Agüero</p>
-                <p>Juan Mallma</p>
-                <p><%: DateTime.Now.Year %></p>
+                <p aria-atomic="True" style="color: #FFFFFF">Pablo Agüero</p>
+                <p aria-atomic="True" style="color: #FFFFFF">Juan Mallma</p>
+                <p style="color: #FFFFFF"><%: DateTime.Now.Year %></p>
             </footer>
         </div>
     </form>
