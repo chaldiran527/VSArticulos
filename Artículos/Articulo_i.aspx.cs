@@ -17,7 +17,7 @@ namespace Artículos
 
         }
         //Hilera de conexion a la base de datos 
-        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-38G492P;Initial Catalog=Prueba1;Integrated Security=True");
+        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-38G492P;Initial Catalog=PruebaConcepto;Integrated Security=True");
         protected void Button2_Click(object sender, EventArgs e)//boton insertar
         {
 
@@ -32,7 +32,7 @@ namespace Artículos
             SqlCommand command = new SqlCommand();
             command.Connection = conexion;//Se le asigna la hilera conexion
             command.CommandType = CommandType.StoredProcedure;//Asigna el tipo de comando store procedure
-            command.CommandText = "SP_InsertArticulo";//Nombre del store procedure para insertar
+            command.CommandText = "SP_InsertarArticulo";//Nombre del store procedure para insertar
 
             command.Parameters.AddWithValue("inNombre", nombreArticulo);
             command.Parameters.AddWithValue("inPrecio", precioArticulo);

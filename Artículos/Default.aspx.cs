@@ -15,7 +15,7 @@ namespace Artículos
 
     public partial class _Default : Page
     {
-        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-38G492P;Initial Catalog=Prueba1;Integrated Security=True");
+        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-38G492P;Initial Catalog=PruebaConcepto;Integrated Security=True");
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,7 +28,7 @@ namespace Artículos
             SqlCommand command = new SqlCommand();
             command.Connection = conexion;
             command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "SP_Mostrar";
+            command.CommandText = "SP_ListarArticulos";
 
             command.Parameters.AddWithValue("inPatron", "");
             command.Parameters.AddWithValue("outResultCode", 0);
